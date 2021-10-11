@@ -1,1 +1,2 @@
-# Humanoid-Robotics-Teleoperation-Hyoubert
+# Humanoid Robotics Teleoperation
+#           Hyoubert
