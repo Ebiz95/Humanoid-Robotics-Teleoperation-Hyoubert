@@ -3,8 +3,8 @@ using System;
 public float[] AddNumbers(float[] pos)
 {
     // Constants
-    float[] L = {0,0.7, 0.2, 0.05, 0.13,0.13, 0.04,0.03,0.005};
-    float[] links = {L[4], Math.Sqrt(Math.Pow(L[5] + L[6], 2) + Math.Pow(L[8], 2))};
+    float[] L = {0, 0.498, 0.1185, 0.075, 0.160, 0.149, 0.060, 0.004};
+    float[] links = {L[4], Math.Sqrt(Math.Pow(L[5] + L[6], 2) + Math.Pow(L[7], 2))};
     float[] minAngles = {-3*Math.PI/4, -3*Math.PI/4, -3*Math.PI/4};
     float[] maxAngles = {+3*Math.PI/4, +3*Math.PI/4, +3*Math.PI/4};
 
@@ -50,14 +50,14 @@ public float[] AddNumbers(float[] pos)
     float term = Math.Atan(targetFrame3[2]/targetFrame3[0]);
     float nominator = links[1]*Math.Sin(thetas[2]);
     float denominator = links[0] + links[1]*Math.Cos(thetas[2]);
-    thetas[1] = term - Math.Atan(nominator/denominator)
+    thetas[1] = term - Math.Atan(nominator/denominator);
 
     // Restrict thetas
     for (int i = 0; i < thetas.Length; i++) {
         if (thetas[i] < minAngles[i])
-            thetas[i] = minAngles[i]
+            thetas[i] = minAngles[i];
         else if (thetas[i] > maxAngles[i])
-            thetas[i] = maxAngles[i] 
+            thetas[i] = maxAngles[i];
     }
 
     return thetas;

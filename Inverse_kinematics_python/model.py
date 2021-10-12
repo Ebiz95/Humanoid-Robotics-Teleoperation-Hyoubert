@@ -41,13 +41,13 @@ def plot_base(ax, L):
 
     # dist2
     from_pos = [L[3]+L[4] + L[5], -L[2], L[1]]
-    to_pos = [L[3]+L[4] + L[5], -L[2], L[1]+L[8]]
+    to_pos = [L[3]+L[4] + L[5], -L[2], L[1]+L[7]]
     ax.plot([from_pos[0], to_pos[0]], [from_pos[1], to_pos[1]],
             [from_pos[2], to_pos[2]], c="k", alpha=alpha)
 
     # dist2
-    from_pos = [L[3]+L[4] + L[5], -L[2], L[1]+L[8]]
-    to_pos = [L[3]+L[4] + L[5] + L[6], -L[2], L[1]+L[8]]
+    from_pos = [L[3]+L[4] + L[5], -L[2], L[1]+L[7]]
+    to_pos = [L[3]+L[4] + L[5] + L[6], -L[2], L[1]+L[7]]
     ax.plot([from_pos[0], to_pos[0]], [from_pos[1], to_pos[1]],
             [from_pos[2], to_pos[2]], c="k", alpha=alpha)
 
@@ -175,7 +175,7 @@ def calculate_angles(pos, link, ax):
     return restricted_theta
 
 
-L = np.array([0,0.7, 0.2, 0.05, 0.13,0.13, 0.04,0.03,0.005])
+L = np.array([0, 0.498, 0.1185, 0.075, 0.160, 0.149, 0.060, 0.004])
 
 min_angles = np.array([-np.pi/2-np.pi/4, -np.pi/2-np.pi/4, -np.pi/2-np.pi/4])
 max_angles = np.array([np.pi/2+np.pi/4, np.pi/2+np.pi/4, np.pi/2+np.pi/4])
@@ -184,7 +184,7 @@ pos = np.array([0.25, -0.11, 0.6])
 #pos = np.array([0.18, 0.15, 0.6])
 #pos = np.array([0.18, 0.15, 0.8])
 
-link = [L[4], np.sqrt((L[5] + L[6])**2 + L[8]**2)]
+link = [L[4], np.sqrt((L[5] + L[6])**2 + L[7]**2)]
 
 ### Create plot
 
