@@ -8,4 +8,4 @@ The C# script primaryButtonWatcher.cs is used within the Unity game engine proje
 The Unity Software project can be recreated by following the tutorial at https://youtu.be/wnn-dzHz-tA
 
 #           IK model
-The used IK-model is described in the project report and tested using a Python-script found in the folder [test IK](https://github.com/Ebiz95/Humanoid-Robotics-Teleoperation-Hyoubert/tree/main/test_IK)
+The used inverse kinematics model is described in the project report and implemented in "PrimaryButtonWatcher.cs". It was also tested using a Python-script found in the folder [test IK](https://github.com/Ebiz95/Humanoid-Robotics-Teleoperation-Hyoubert/tree/main/test_IK)
