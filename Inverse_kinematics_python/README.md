@@ -6,4 +6,7 @@ The python file called "model.py" plotts the body of Hubert when he tries to rea
 
 Sliders are used to 
 
-https://github.com/Ebiz95/Humanoid-Robotics-Teleoperation-Hyoubert/blob/main/Inverse_kinematics_python/plot.mp4
+<video width="320" height="240" controls>
+  <source src="https://github.com/Ebiz95/Humanoid-Robotics-Teleoperation-Hyoubert/blob/main/Inverse_kinematics_python/plot.mp4" type="video/mp4">
+</video>
+
