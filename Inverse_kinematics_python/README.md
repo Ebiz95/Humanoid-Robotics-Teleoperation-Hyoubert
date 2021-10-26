@@ -5,8 +5,6 @@ The python file called "model.py" plotts the body of Hubert when he tries to rea
 *The body parts are plotted and all angles updated in the plot to the right
 
 Sliders are used to 
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/RGSIQ5LoKuU/0.jpg)](https://j.gifs.com/OgEXnp.gif)
 
-<video width="320" height="240" controls>
-  <source src="https://github.com/Ebiz95/Humanoid-Robotics-Teleoperation-Hyoubert/blob/main/Inverse_kinematics_python/plot.mp4" type="video/mp4">
-</video>
 
