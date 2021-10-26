@@ -87,10 +87,11 @@ public class PrimaryButtonWatcher : MonoBehaviour
         // Constants
         double[] L = { 0.0, 0.498, 0.1185, 0.075, 0.160, 0.149, 0.060, 0.004 };
         L[1] = 0.0;
-        double[] links = { L[4], Math.Sqrt(Math.Pow(L[5] + L[6], 2) + Math.Pow(L[7], 2)) };
+        double U3 = Math.Sqrt(Math.Pow(L[5] + L[6], 2) + Math.Pow(L[7], 2));
         double[] minAngles = { -3 * Math.PI / 4, -3 * Math.PI / 4, -3 * Math.PI / 4 };
         double[] maxAngles = { +3 * Math.PI / 4, +3 * Math.PI / 4, +3 * Math.PI / 4 };
-        double U4;
+        double thetaA,thetaB,thetaC,thetaD;
+        double U1,U2,U3,U4,U5,U6;
 
         // scale position to Hyoubert scale
         double[] pos = new double[]{ 0.0, 0.0, 0.0 };
@@ -106,61 +107,62 @@ public class PrimaryButtonWatcher : MonoBehaviour
         double[] thetas = { 0, 0, 0 };
 
         // Calculate first theta
-        double U1 = pos[0];
-        double U2 = pos[1];
-
         if (pos[0] < 0)
         {
-            double thetasA = -Math.Atan(U1 / U2);
-            double U3 = Math.Sqrt(Math.Pow(U1, 2) + Math.Pow(U2, 2));
-            U4 = Math.Sqrt(Math.Pow(U3, 2) - Math.Pow(L[2], 2));
-            double thetasB = Math.Acos(L[2] / U3);
-            if (pos[1] > 0)
-            {
-                thetas[0] = Math.PI + thetasA - thetasB;
+            if (pos[1] < 0)
+            {   
+                thetaA = Math.Abs(Math.Atan(pos[0] / pos[1]));
+                U1 = Math.Sqrt(Math.Pow(pos[0], 2) + Math.Pow(pos[1], 2));
+                thetaB = Math.Acos(L[2] / U1);
+                thetas[0] = -thetaA - thetaB;
             }
             else
             {
-                thetas[0] = thetasA - thetasB;
+                thetaA = Math.Abs(Math.Atan(pos[0] / pos[1]));
+                U1 = Math.Sqrt(Math.Pow(pos[0], 2) + Math.Pow(pos[1], 2));
+                thetaB = Math.Acos(L[2] / U1);
+                thetas[0] = Math.PI + thetaA - thetaB;
             }
         }
         else
         {   
-            // When x > 0 and y switch from + to - the first theta changes by 180 degrees for some reason
-            double thetasA = Math.Atan(U2 / U1);
-            double U3 = Math.Sqrt(Math.Pow(U1, 2) + Math.Pow(U2, 2));
-            U4 = Math.Sqrt(Math.Pow(U3, 2) - Math.Pow(L[2], 2));
-            double thetasB = Math.Acos(L[2] / U3);
-
-            thetas[0] = Math.PI / 2 - (-thetasA + thetasB);
+            if (pos[1] < 0)
+            {   
+                thetaA = Math.Abs(Math.Atan(pos[1] / pos[0]));
+                U1 = Math.Sqrt(Math.Pow(pos[0], 2) + Math.Pow(pos[1], 2));
+                thetaB = Math.Acos(L[2] / U1);
+                thetas[0] = Math.PI/2 - (thetaA + thetaB);
+            }
+            else
+            {
+                thetaA = Math.Abs(Math.Atan(pos[1] / pos[0]));
+                U1 = Math.Sqrt(Math.Pow(pos[0], 2) + Math.Pow(pos[1], 2));
+                thetaB = Math.Acos(L[2] / U1);
+                thetas[0] = Math.PI/2 + thetaA - thetaB;
+            }
         }
-        double theta0 = thetas[0];
-        //thetas[0] = restrict(thetas[0], minAngles[0], maxAngles[0], prev_thetas[0]);
+        
+        // Arm length
+        U2 = Math.Sqrt(Math.Pow(U1, 2) - Math.Pow(L[2], 2));
         
         // Calculate third theta
-        double[] targetFrame3 = { U4 - L[3], 0, pos[2] - L[1] };
-
-        double nominator = Math.Pow(targetFrame3[0], 2) +
-                            Math.Pow(targetFrame3[2], 2) -
-                            Math.Pow(links[0], 2) -
-                            Math.Pow(links[1], 2);
-        double denominator = 2 * links[0] * links[1];
-        thetas[2] = Math.Acos(nominator / denominator);
-        double theta2 = thetas[2];
-        //thetas[2] = restrict(thetas[2], minAngles[2], maxAngles[2], prev_thetas[2]);
+        double[] posFrame1 = { U2 - L[3], 0, pos[2]};
+        
+        U4 = Math.Sqrt(Math.Pow(posFrame1[0], 2) + Math.Pow(posFrame1[2], 2));
+        double numerator = Math.Pow(U4, 2) - Math.Pow(L[4], 2) - Math.Pow(U3, 2);
+        double denominator = 2 * L[4] * U3;
+        thetas[2] = Math.Acos(numerator / denominator);
 
         // Calculate second theta
-        double term = Math.Atan(targetFrame3[2] / targetFrame3[0]);
-        nominator = links[1] * Math.Sin(thetas[2]);
-        denominator = links[0] + links[1] * Math.Cos(thetas[2]);
-        thetas[1] = term - Math.Atan(nominator / denominator);
-        //thetas[1] = restrict(thetas[1], minAngles[1], maxAngles[1], prev_thetas[1]);
-        double theta1 = thetas[1];
-
-        //Debug.Log("Thetas: " + theta0 * (180 / Math.PI) + ", " + theta1 * (180 / Math.PI) + ", " + theta2 * (180 / Math.PI));
-
-        //Debug.Log("Thetas restricted: " + thetas[0] * (180 / Math.PI) + ", " + thetas[1] * (180 / Math.PI) + ", " + thetas[2] * (180 / Math.PI));
-
+        thetaC = Math.Atan(posFrame1[2] / posFrame1[0])
+        U5 = U3 * Math.Sin(thetas[2]);
+        U6 = U3 * Math.Cos(thetas[2]);
+        thetaD = Math.Atan(U5 / (L[4] + U6));
+        thetas[1] = thetaC - thetaD;
+        
+        // Give thetas the previous value if 
+        // they are out of range or
+        // if they have NaN values
         for (int i = 0; i < 3; i++)
         {
             if (double.IsNaN(thetas[i]))
@@ -180,7 +182,6 @@ public class PrimaryButtonWatcher : MonoBehaviour
                 break;
             }
         }
-        // Handle nan values
         prev_thetas[0] = thetas[0];
         prev_thetas[1] = thetas[1];
         prev_thetas[2] = thetas[2];
