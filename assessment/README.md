@@ -1,6 +1,5 @@
 # Assessment of Hubert
 ##### Project conducted in Chalmers University of Technology at the Department of Mechanics and maritime sciences
-##### Link to the GitHub repo consisting of our code
 The stages are reffering to the stages mentioned in the project report. 
 
 ## Stage 1
