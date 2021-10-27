@@ -1,4 +1,4 @@
-# Assessment for Hyoubert
+# Assessment of Hubert
 The stages are reffering to teh stages mentioned in the project report. 
 
 ## Stage 1
