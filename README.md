@@ -17,3 +17,5 @@ The used inverse kinematics model is described in the project report and impleme
 
 ##        Assessment
 Several tests for assessment of the resulting robot are demonstrated in the folder "[assessment](https://github.com/Ebiz95/Humanoid-Robotics-Teleoperation-Hyoubert/tree/main/assessment)" and further described in the project report. 
+
+###### Project carried out by Jonathan Nordström, Sara Larsson, Ebaa Asaad and Ria Raj.
