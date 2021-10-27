@@ -1,4 +1,7 @@
 # Humanoid Robotics Teleoperation
+
+This project was conducted as a part of the course TIF160 Humanoid Robotics at Chalmers university of technology, Gothenburg, Sweden.
+
 ##           Hyoubert
 These are all the files used in the project Hyoubert, virtual reality teleoperation of hummanoid robot.
 
