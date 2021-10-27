@@ -2,7 +2,7 @@
 
 This project was conducted as a part of the course TIF160 Humanoid Robotics at Chalmers university of technology, Gothenburg, Sweden.
 
-##           Hyoubert
+##           Hyoubert - we put the you in Hubert
 These are all the files used in the project Hyoubert, virtual reality teleoperation of the hummanoid robot called Hubert.
 
 In the folder "[src](https://github.com/Ebiz95/Humanoid-Robotics-Teleoperation-Hyoubert/tree/main/src)" you will find the final code.  "Hyoubert_Serial_Reader.ino" is the code used in the Arduino on the Hubert robot and "PrimaryButtonWatcher.cs" includes the IK-model and part of the interaction between VR-Unity-Arduino. 
