@@ -1,6 +1,6 @@
 # Assessment of Hubert
-### Project conducted in Chalmers University of Technology at the Department of Mechanics and maritime sciences
-### Link to the GitHub repo consisting of our code
+##### Project conducted in Chalmers University of Technology at the Department of Mechanics and maritime sciences
+##### Link to the GitHub repo consisting of our code
 The stages are reffering to the stages mentioned in the project report. 
 
 ## Stage 1
@@ -13,4 +13,4 @@ https://user-images.githubusercontent.com/38947347/138955185-1f676642-dcc6-470f-
 ## Stage 4
 https://user-images.githubusercontent.com/38947347/138955572-84b8c08c-a7d1-4a68-aaf7-efbcbac174ef.mp4
 
-### Project conducted by Jonathan Nordström, Sara Larsson, Ebaa Asaad and Ria Raj.
+###### Project conducted by Jonathan Nordström, Sara Larsson, Ebaa Asaad and Ria Raj.
